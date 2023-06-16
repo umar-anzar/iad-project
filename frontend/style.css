@@ -44,6 +44,7 @@ header {
     height: 10%;
     background: #8E3896;
     border-radius: 0 0 50px 50px;
+    box-shadow: 0 0 30px rgba(114, 114, 114, 0.5);
     top: 0;
     position: sticky;
     position: -webkit-sticky;
@@ -64,14 +65,16 @@ header {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    justify-items: center;
     width: 80%;
+    height: 100%;
 }
 
 .nav-item {
     display: block;
-    flex-grow: 1;
     text-align: center;
     font-size: 1em;
 }
@@ -93,26 +96,42 @@ header {
     font-size: 32px;
 }
 
-.intro {
+#intro {
     color: #000000;
-    margin: 10% 5% 0 5%;
+    margin: 8% 5% 0 5%;
     display: flex;
     justify-content: center;
 }
 
-.intro h1 {
+#intro h1 {
     font-family: 'Raleway-SemiBold';
     font-size: 4em;
     margin-bottom: -2%;
 }
 
-.intro p {
+#intro p {
     font-family: 'Raleway-SemiBold';
     font-size: 2em;
     width: 68%;
     margin-bottom: 0%;
 }
 
+.social_acc_icons img {
+    width: 4em;
+}
+
+.social_acc_icons img:hover {
+    cursor: pointer;
+}
+
 .right_character img {
     width: 220px;
-} 
+}
+
+#about {
+    background: rgba(255, 255, 255, 0.8);
+    margin: 0 5% 0 5%;
+    width: 90%;
+    height: 500px;
+
+}
