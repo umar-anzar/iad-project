@@ -99,12 +99,13 @@ header {
 #intro {
     color: #000000;
     margin: 8% 5% 0 5%;
+    padding: 0 3% 0 3%;
     display: flex;
     justify-content: center;
 }
 
 #intro h1 {
-    font-family: 'Raleway-SemiBold';
+    font-family: 'Raleway-Bold';
     font-size: 4em;
     margin-bottom: -2%;
 }
@@ -129,9 +130,9 @@ header {
 }
 
 #about {
-    background: rgba(255, 255, 255, 0.8);
-    margin: 0 5% 0 5%;
+    background: #ffeeee;
+    margin: 2% 5% 0 5%;
     width: 90%;
     height: 500px;
-
+    border-radius: 5px;
 }
