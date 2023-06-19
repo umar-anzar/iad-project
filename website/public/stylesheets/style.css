@@ -1,28 +1,29 @@
 html {
-  width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 body {
   margin: 0;
-  width: 100%;
-  height: 100%;
-
   color: #ffffff;
+  background-color: #ffffff;
   font-family: "Raleway",Arial, Helvetica, sans-serif;
   font-size: 16px;
-  
 }
+
 
 /* * {
   border: 1px solid red;
 } */
 
+h1, h2 {
+  margin: 0;
+}
+
 #home {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 #home_image {
@@ -39,9 +40,10 @@ body {
 }
 
 #home_content {
-  padding: 2% 10% 0 2%;
-  width: 55%;
+  padding: 1% 10% 0 2%;
+  width: 70%;
   height: 100%;
+  box-sizing: border-box;
 }
 
 header {
@@ -99,13 +101,37 @@ header {
 h1 {
   font-family: "Raleway-Bold",Arial, Helvetica, sans-serif;
   font-size: 6em;
-  margin: 0;
 }
 
 #home_intro p{
+  padding-right: 30%;
   font-family: "Raleway-SemiBold",Arial, Helvetica, sans-serif;
+  font-size: 2em;
+}
+
+
+
+#about, #contact, #testimonial, #blog, #work{
+  padding: 0% 10% 0 10%;
+}
+
+#about {
+  padding-top: 5%;
+}
+
+h2 {
+  font-family: "Raleway-SemiBold",Arial, Helvetica, sans-serif;
+  font-size: 4em;
+}
+
+#about p{
+  font-family: "Raleway-Medium",Arial, Helvetica, sans-serif;
   font-size: 2em;
   padding-right: 30%;
 }
 
-
+#profile_pic {
+  width: 25%;
+  
+  clip-path: circle(35% at center);
+}
