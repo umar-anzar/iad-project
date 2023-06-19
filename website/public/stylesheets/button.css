@@ -1,0 +1,16 @@
+.button {
+    border: none;
+    color: #ffffff;
+    font-family: "Raleway-SemiBold",Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 10px 30px 10px 30px;
+}
+
+.button:hover {
+    cursor: pointer; /* Change cursor style to pointer on hover */
+    background-color: #9599eb;
+}
+
+.download_btn {
+  padding: 20px 30px 20px 30px;
+}

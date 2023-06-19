@@ -35,7 +35,7 @@ h1, h2 {
 }
 
 .home_bar {
-  width: 2.5%;
+  width: 40px;
   height: 100%;
 }
 
@@ -85,18 +85,7 @@ header {
   cursor: pointer; /* Change cursor style to pointer on hover */
 }
 
-.button {
-    border: none;
-    color: #ffffff;
-    font-family: "Raleway-SemiBold",Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    padding: 10px 30px 10px 30px;
-}
 
-.button:hover {
-    cursor: pointer; /* Change cursor style to pointer on hover */
-    background-color: #9599eb;
-}
 
 h1 {
   font-family: "Raleway-Bold",Arial, Helvetica, sans-serif;
@@ -111,12 +100,14 @@ h1 {
 
 
 
-#about, #contact, #testimonial, #blog, #work{
-  padding: 0% 10% 0 10%;
+#contact, #testimonial, #blog, #work{
+  padding: 5% 5% 0 5%;
 }
 
 #about {
-  padding-top: 5%;
+  padding: 0% 5% 0 5%;
+  padding-top: 8%;
+  padding-bottom: 8%;
 }
 
 h2 {
@@ -130,8 +121,17 @@ h2 {
   padding-right: 30%;
 }
 
+#title_profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 #profile_pic {
-  width: 25%;
-  
+  width: 30%;
   clip-path: circle(35% at center);
+}
+
+.hr_bar {
+  height: 40px;
 }
