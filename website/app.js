@@ -30,9 +30,9 @@ app.get("/contact", (request, response) => {
 
 // Recieve Form Data
 app.post("/contact_form", (req, res) => {
-    // const email1 = req.body.email;
-    // const name1 = req.body.nme;
-    // const message1 = req.body.message;
+    const email1 = req.body.email;
+    const name1 = req.body.nme;
+    const message1 = req.body.message;
     console.log(req.body);
     //   add Data in model
     //const addData = new myModel({ name: name1, email: email1, message: message1});
