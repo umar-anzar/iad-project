@@ -95,10 +95,16 @@
     <!-- Contact -->
     <section id="contact" class="brown">
         <h2>Contact</h2>
-        <div id="work_container">
-            <div class="work_box" id="education">Education</div>
-            <div class="work_box" id="company">Company Name</div>
-            <div class="work_box" id="skills">Skills</div>
+        <div id="contact_container">
+            <form action="" method="post" id="contact_form">
+                <div id="name_email_field">
+                    <input type="text" name="nme" id="nme" placeholder="Enter Name" required>
+                    <input type="email" name="email" id="email" placeholder="Enter Email" required>
+                </div>
+                <div>
+                    <textarea name="message" id="message" rows="20" placeholder="Write Your Message"></textarea>
+                </div>
+            </form>
         </div>
     </section>
 

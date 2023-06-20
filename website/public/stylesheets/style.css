@@ -12,9 +12,7 @@ body {
 }
 
 
-/* * {
-  border: 1px solid red;
-} */
+/* * {border: 1px solid red;} */
 
 h1, h2 {
   margin: 0;
@@ -173,3 +171,45 @@ h2 {
   background-color: rgba(61, 73, 92, 0.95);
 }
 
+
+
+
+
+
+
+
+#contact_container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#contact_form {
+  text-align: center;
+  width: 60%;
+}
+
+#name_email_field{
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+  margin: 0 0 1% 0;
+}
+
+#name_email_field input, #message {
+  border-radius: 3px;
+  font-family: "Raleway",Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  border: none;
+}
+
+#name_email_field input {
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+#message {
+
+  width: 100%;
+}
