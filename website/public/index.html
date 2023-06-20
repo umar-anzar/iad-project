@@ -26,7 +26,7 @@
                       <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
                     </ul>
                 </nav>
-                <button class="button purple"><a href="#contact" class="contact_btn">Contact</a></button> 
+                <button class="button purple"><a href="contact.html" target="_blank" class="contact_btn">Contact</a></button> 
             </header>
             <div id="home_intro">
                 <h1>Hello!</h1>
@@ -92,21 +92,23 @@
     </section>
 
 
-    <!-- Contact -->
+    <!-- Contact
     <section id="contact" class="brown">
         <h2>Contact</h2>
         <div id="contact_container">
-            <form action="" method="post" id="contact_form">
+            <form action="/public/index.html" method="post" id="contact_form">
                 <div id="name_email_field">
                     <input type="text" name="nme" id="nme" placeholder="Enter Name" required>
                     <input type="email" name="email" id="email" placeholder="Enter Email" required>
                 </div>
                 <div>
-                    <textarea name="message" id="message" rows="20" placeholder="Write Your Message"></textarea>
+                    <textarea name="message" id="message" rows="15" 
+                    placeholder="Write Your Message" minlength="10" maxlength="1000" required></textarea>
                 </div>
+                <button id="send_message" class="button purple download_btn" type="submit">Send Message</button> 
             </form>
         </div>
-    </section>
+    </section> -->
 
     <script src="javascripts\work_content.js"></script>
 </body>

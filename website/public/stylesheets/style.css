@@ -186,7 +186,7 @@ h2 {
 
 #contact_form {
   text-align: center;
-  width: 60%;
+  width: 55%;
 }
 
 #name_email_field{
@@ -204,12 +204,12 @@ h2 {
 }
 
 #name_email_field input {
-  padding: 0;
+  padding: 2% 2% 2% 2%;
   margin: 0;
   flex: 1;
 }
 
 #message {
-
-  width: 100%;
+  padding: 2% 0 2% 2%;
+  width: 98%;
 }
