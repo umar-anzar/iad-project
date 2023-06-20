@@ -1,0 +1,71 @@
+
+html {
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    color: #ffffff;
+    background-color: #ffffff;
+    font-family: "Raleway",Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    height: 100%;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+h2 {
+    font-family: "Raleway-SemiBold",Arial, Helvetica, sans-serif;
+    font-size: 4em;
+}
+
+#contact h2 {
+    text-align: center;
+    margin: 0 0 10% 0;
+}
+
+#contact {
+    padding: 3% 5% 5% 3%;
+    height: 100%;
+}
+  
+  
+#contact_container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#contact_form {
+    text-align: center;
+    width: 55%;
+}
+
+#name_email_field{
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    margin: 0 0 1% 0;
+}
+
+#name_email_field input, #message {
+    border-radius: 3px;
+    font-family: "Raleway",Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    border: none;
+}
+
+#name_email_field input {
+    padding: 2% 2% 2% 2%;
+    margin: 0;
+    flex: 1;
+}
+
+#message {
+    padding: 2% 0 2% 2%;
+    margin-bottom: 1%;
+    width: 98%;
+}

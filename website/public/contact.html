@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="stylesheets/colorScheme.css">
     <link rel="stylesheet" href="stylesheets/fontStyle.css">
     <link rel="stylesheet" href="stylesheets/button.css">
-    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/contact.css">
 </head>
 <body>
     <!-- Contact -->
     <section id="contact" class="brown">
         <h2>Contact</h2>
         <div id="contact_container">
-            <form action="/public/index.html" method="post" id="contact_form">
+            <form  method="post" id="contact_form">
                 <div id="name_email_field">
                     <input type="text" name="nme" id="nme" placeholder="Enter Name" required>
                     <input type="email" name="email" id="email" placeholder="Enter Email" required>
@@ -23,9 +23,11 @@
                     <textarea name="message" id="message" rows="15" 
                     placeholder="Write Your Message" minlength="10" maxlength="1000" required></textarea>
                 </div>
-                <button id="send_message" class="button purple download_btn" type="submit">Send Message</button> 
+                <button id="send_message" class="button purple download_btn">Send Message</button> 
             </form>
         </div>
     </section>
+
+    <script src="javascripts/form.js"></script>
 </body>
 </html>
