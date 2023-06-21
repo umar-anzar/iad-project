@@ -1,9 +1,41 @@
+// Import Express and Mongoose
 const express = require("express");
+const mongo = require("mongoose");
+
+// Create Express App and Extract Schema
 const app = express();
+const { Schema } = mongo;
+
 
 // Express JS Middleware
 app.use(express.json());
 app.use(express.static(__dirname + '/public'));
+
+
+// Connecting to MongoDB using async/await
+const connectDB = async () => {
+try {
+    await mongo.connect("mongodb://127.0.0.1:27017/portfolio");
+    console.log("MongoDB Connected");
+} catch (error) {
+    console.error(error);
+    process.exit(1);
+}
+};
+  
+connectDB();
+
+
+
+//Creating Schema for Contact Model {name, email, message}
+const contactSchema = new Schema({
+    name: String,
+    email: String,
+    message: String
+});
+
+// Creating Contact Model
+const ContactModel = mongo.model("contact", contactSchema);
 
 const error500 = (error, response) => {
     if (error) {
@@ -14,6 +46,7 @@ const error500 = (error, response) => {
     }
 };
 
+
 // root URL ('/') 
 app.get("/", (request, response) => {
     response.statusCode = 200;
@@ -21,34 +54,48 @@ app.get("/", (request, response) => {
     response.sendFile(__dirname+"/public/index.html", (error) => ( error500(error, response) ) ); 
 });
 
-app.get("/contact", (request, response) => {
+app.get("/contact", async(request, response) => {
+    console.log("Server Running");
     response.statusCode = 200;
     response.setHeader("Content-Type", "text/html");
     response.sendFile(__dirname+"/public/contact.html", (error) => ( error500(error, response) ) ); 
 });
 
 app.get("/download_cv", (request, response) => {
+    const filePath = __dirname + '/public/CV/umarCSResume.pdf';
+    const fileName = 'umarCSResume.pdf';
+
     response.statusCode = 200;
+    response.setHeader('Content-Disposition', 'attachment; filename=' + fileName);
     response.setHeader("Content-Type", "application/pdf");
-    response.sendFile(__dirname+"/public/CV/umarCSResume.pdf", (error) => ( error500(error, response) ) ); 
+    response.sendFile(filePath, (error) => ( error500(error, response) ) ); 
 });
 
 
-// Recieve Form Data
-app.post("/contact_form", (req, res) => {
+// Recieve Form Data and add it to the database
+app.post("/contact_form", async (req, res) => {
     const email1 = req.body.email;
-    const name1 = req.body.nme;
+    const name1 = req.body.name;
     const message1 = req.body.message;
-    //console.log(req.body);
-    //   add Data in model
-    //const addData = new myModel({ name: name1, email: email1, message: message1});
-    //   call function to add data
-    //insertData(addData);
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "text/plain");
-    res.end("Data Received!");
+
+    // Add Data in model
+    const newContact = new ContactModel({ name: name1, email: email1, message: message1});
+
+    try {
+        // Save the newContact instance to the database
+        const savedContact = await newContact.save();
+        console.log('Data saved:', savedContact);
+    
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "text/plain");
+        res.end("Data Received!");
+      } catch (error) {
+        console.error('Error saving data:', error);
+        res.statusCode = 500;
+        res.setHeader("Content-Type", "text/plain");
+        res.end("Error saving data!");
+      }
 });
-  
 
 
 

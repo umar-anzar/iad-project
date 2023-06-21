@@ -27,7 +27,7 @@ h1, h2 {
 
 #home_image {
   flex: 1;
-  background-image: url('../images/home_image.jpg');
+  background-image: url('../images/home_image.webp');
   background-size: cover;
   background-position: 80%;
   height: 100%;
