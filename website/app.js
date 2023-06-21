@@ -3,11 +3,11 @@ const app = express();
 
 // Express JS Middleware
 app.use(express.json());
-app.use(express.urlencoded());
 app.use(express.static(__dirname + '/public'));
 
 const error500 = (error, response) => {
     if (error) {
+        console.log(error);
         console.log("File not found");
         response.statusCode = 500; // Internal Server Error
         response.send("Internal Server Error");
@@ -27,13 +27,19 @@ app.get("/contact", (request, response) => {
     response.sendFile(__dirname+"/public/contact.html", (error) => ( error500(error, response) ) ); 
 });
 
+app.get("/download_cv", (request, response) => {
+    response.statusCode = 200;
+    response.setHeader("Content-Type", "application/pdf");
+    response.sendFile(__dirname+"/public/CV/umarCSResume.pdf", (error) => ( error500(error, response) ) ); 
+});
+
 
 // Recieve Form Data
 app.post("/contact_form", (req, res) => {
     const email1 = req.body.email;
     const name1 = req.body.nme;
     const message1 = req.body.message;
-    console.log(req.body);
+    //console.log(req.body);
     //   add Data in model
     //const addData = new myModel({ name: name1, email: email1, message: message1});
     //   call function to add data
