@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Clean up the temporary URL object
                 URL.revokeObjectURL(url);
             });
-        })  
+        })
+        
         .catch(error => {
             console.error('Error fetching PDF file:', error);
         });

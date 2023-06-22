@@ -14,15 +14,15 @@ app.use(express.static(__dirname + '/public'));
 
 // Connecting to MongoDB using async/await
 const connectDB = async () => {
-try {
-    await mongo.connect("mongodb://127.0.0.1:27017/portfolio");
-    console.log("MongoDB Connected");
-} catch (error) {
-    console.error(error);
-    process.exit(1);
-}
+    try {
+        await mongo.connect("mongodb://127.0.0.1:27017/portfolio");
+        console.log("MongoDB Connected");
+    } catch (error) {
+        console.error(error);
+        process.exit(1);
+    }
 };
-  
+
 connectDB();
 
 
@@ -51,14 +51,14 @@ const error500 = (error, response) => {
 app.get("/", (request, response) => {
     response.statusCode = 200;
     response.setHeader("Content-Type", "text/html");
-    response.sendFile(__dirname+"/public/index.html", (error) => ( error500(error, response) ) ); 
+    response.sendFile(__dirname + "/public/index.html", (error) => (error500(error, response)));
 });
 
-app.get("/contact", async(request, response) => {
+app.get("/contact", (request, response) => {
     console.log("Server Running");
     response.statusCode = 200;
     response.setHeader("Content-Type", "text/html");
-    response.sendFile(__dirname+"/public/contact.html", (error) => ( error500(error, response) ) ); 
+    response.sendFile(__dirname + "/public/contact.html", (error) => (error500(error, response)));
 });
 
 app.get("/download_cv", (request, response) => {
@@ -68,33 +68,33 @@ app.get("/download_cv", (request, response) => {
     response.statusCode = 200;
     response.setHeader('Content-Disposition', 'attachment; filename=' + fileName);
     response.setHeader("Content-Type", "application/pdf");
-    response.sendFile(filePath, (error) => ( error500(error, response) ) ); 
+    response.sendFile(filePath, (error) => (error500(error, response)));
 });
 
 
-// Recieve Form Data and add it to the database
+// Receive Form Data and add it to the database
 app.post("/contact_form", async (req, res) => {
     const email1 = req.body.email;
     const name1 = req.body.name;
     const message1 = req.body.message;
 
     // Add Data in model
-    const newContact = new ContactModel({ name: name1, email: email1, message: message1});
+    const newContact = new ContactModel({ name: name1, email: email1, message: message1 });
 
     try {
         // Save the newContact instance to the database
         const savedContact = await newContact.save();
         console.log('Data saved:', savedContact);
-    
+
         res.statusCode = 200;
         res.setHeader("Content-Type", "text/plain");
         res.end("Data Received!");
-      } catch (error) {
+    } catch (error) {
         console.error('Error saving data:', error);
         res.statusCode = 500;
         res.setHeader("Content-Type", "text/plain");
         res.end("Error saving data!");
-      }
+    }
 });
 
 
@@ -105,7 +105,7 @@ app.use((request, response) => {
     response.statusCode = 404; // Not Found
     response.setHeader("Content-Type", "text/html");
     response.send("404: Page Not Found");
-  });
+});
 
 /* the placement of the catch-all middleware function does matter in Express.js. 
 It should be placed at the end of all other route handlers and middleware functions 
@@ -113,6 +113,6 @@ to ensure that it acts as a fallback for non-existent routes.
 */
 
 
-app.listen("3000", "localhost", ()=>{
+app.listen("3000", "localhost", () => {
     console.log("Server is running on http://localhost:3000");
 })

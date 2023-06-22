@@ -173,6 +173,44 @@ h2 {
 
 
 
+#blog_container {
+  height: 40em; /* Set the desired height of the container */
+  overflow: auto; /* Enable scrolling when content exceeds container height */
+}
+
+.blog {
+  border: 1px solid #676CDB;
+  padding: 10px;
+  margin-bottom: 1%;
+  display: flex;
+  align-items: center;
+}
+
+.image {
+  flex-shrink: 0;
+  margin-right: 10px;
+  width: 25em;
+}
+
+.text {
+  flex-grow: 1;
+}
+
+.heading {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.paragraph {
+  font-size: 14px;
+}
+
+.read_more_blog {
+  color: #676CDB;
+  text-decoration: none;
+}
+
 
 
 
