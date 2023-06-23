@@ -82,14 +82,26 @@ app.post("/contact_form", async (request, response) => {
     // Add Data in model
     const newContact = new ContactModel({ name: name1, email: email1, message: message1 });
 
-    try {
-        // Save the newContact instance to the database
-        const savedContact = await newContact.save();
-        console.log('Data saved:', savedContact);
 
-        response.statusCode = 200;
-        response.setHeader("Content-Type", "text/plain");
-        response.end("Data Received!");
+
+    try {
+        // Check whether database already has same message copy
+        const isDuplicate = await ContactModel.findOne({ name: name1, email: email1, message: message1 });
+        if (isDuplicate) {
+            response.statusCode = 400;
+            response.setHeader("Content-Type", "text/plain");
+            response.end("Email already exists!");
+            console.log("Message ALready Exists");
+        } else {
+
+            // Save the newContact instance to the database
+            const savedContact = await newContact.save();
+            console.log('Data saved:', savedContact);
+
+            response.statusCode = 200;
+            response.setHeader("Content-Type", "text/plain");
+            response.end("Data Received!");
+        }
     } catch (error) {
         console.error('Error saving data:', error);
         response.statusCode = 500;
@@ -124,7 +136,7 @@ app.get("/blogs", async (request, response) => {
         }
     } catch (error) {
         // Send an error response with status code 500 if any error occurs
-        res.status(500).json({ error: 'Error fetching blog content' }); 
+        res.status(500).json({ error: 'Error fetching blog content' });
     }
 });
 
@@ -137,13 +149,24 @@ app.use((request, response) => {
     response.setHeader("Content-Type", "text/html");
     response.send("404: Page Not Found");
 });
-
 /* the placement of the catch-all middleware function does matter in Express.js. 
 It should be placed at the end of all other route handlers and middleware functions 
 to ensure that it acts as a fallback for non-existent routes.
 */
 
 
-app.listen("3000", "localhost", () => {
-    console.log("Server is running on http://localhost:3000");
+// Multiple Network Interfaces
+// Radmin VPN IP
+app.listen("5500", "26.111.20.217", () => {
+    console.log("Server is running on http://26.111.20.217:5500");
+})
+
+// Localhost IP
+app.listen("5500", "localhost", () => {
+    console.log("Server is running on http://localhost:5500");
+})
+
+// Private IP
+app.listen("5500", "192.168.100.54", () => {
+    console.log("Server is running on http://192.168.100.54:5500");
 })
