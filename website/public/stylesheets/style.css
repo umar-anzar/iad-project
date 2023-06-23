@@ -173,6 +173,43 @@ h2 {
 
 
 
+
+#testimonial_container {
+  width: 100%;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+.testimonial_block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 1;
+}
+
+.testimonial_bar {
+  width: 20px;
+}
+.testimonial {
+  border: 1px solid #676CDB;
+  display: flex;
+}
+
+.testimonial img {
+  width: 150px;
+  clip-path: circle(32% at center);
+}
+
+.testimonial h4 {
+  color: #676CDB;
+  font-size: 1.2em;
+  font-family: "Raleway-Bold", Arial, Helvetica, sans-serif;
+}
+
+
 #blog_container {
   height: 40em; /* Set the desired height of the container */
   overflow: auto; /* Enable scrolling when content exceeds container height */
@@ -201,18 +238,30 @@ h2 {
 }
 
 .heading_blog {
-  font-size: 18px;
+  font-family: "Raleway-SemiBold",Arial, Helvetica, sans-serif;
+  color: #676CDB;
+  font-size: 1.5em;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
+cite {
+  font-family: "Raleway-Medium",Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  font-style: normal;
+
+}
+
 .paragraph_blog {
   width: 70%;
-  font-size: 14px;
+  font-size: 1em;
+  font-family: "Raleway",Arial, Helvetica, sans-serif;
 }
 
 .read_more_blog {
   color: #676CDB;
+  font-family: "Raleway-Medium",Arial, Helvetica, sans-serif;
+  font-size: 1em;
   text-decoration: none;
 }
 

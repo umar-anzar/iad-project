@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // image is in base 64
             img.setAttribute('src', `data:image/jpeg;base64,${blog.image}`);
             title.textContent = blog.text.title;
-            author.textContent = blog.text.author;
+            author.textContent = "By: " + blog.text.author;
             intro.textContent = blog.text.intro;
             hyperlink.setAttribute('href', blog.text.hyperlink);
             hyperlink.setAttribute('target', '_blank');
