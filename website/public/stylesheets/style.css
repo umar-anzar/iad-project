@@ -176,33 +176,37 @@ h2 {
 #blog_container {
   height: 40em; /* Set the desired height of the container */
   overflow: auto; /* Enable scrolling when content exceeds container height */
+  border: 1px solid #ffffff;
+  padding: 1%;
 }
 
 .blog {
   border: 1px solid #676CDB;
+  background-color: rgba(34, 42, 54, 1);
   padding: 10px;
   margin-bottom: 1%;
   display: flex;
-  align-items: center;
+  align-items: top;
 }
 
-.image {
+.image_blog {
   flex-shrink: 0;
   margin-right: 10px;
   width: 25em;
 }
 
-.text {
+.text_blog {
   flex-grow: 1;
 }
 
-.heading {
+.heading_blog {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.paragraph {
+.paragraph_blog {
+  width: 70%;
   font-size: 14px;
 }
 

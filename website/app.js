@@ -1,6 +1,7 @@
-// Import Express and Mongoose
+// Import Require Libraries
 const express = require("express");
 const mongo = require("mongoose");
+const fs = require('fs');
 
 // Create Express App and Extract Schema
 const app = express();
@@ -73,10 +74,10 @@ app.get("/download_cv", (request, response) => {
 
 
 // Receive Form Data and add it to the database
-app.post("/contact_form", async (req, res) => {
-    const email1 = req.body.email;
-    const name1 = req.body.name;
-    const message1 = req.body.message;
+app.post("/contact_form", async (request, response) => {
+    const email1 = request.body.email;
+    const name1 = request.body.name;
+    const message1 = request.body.message;
 
     // Add Data in model
     const newContact = new ContactModel({ name: name1, email: email1, message: message1 });
@@ -86,14 +87,44 @@ app.post("/contact_form", async (req, res) => {
         const savedContact = await newContact.save();
         console.log('Data saved:', savedContact);
 
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "text/plain");
-        res.end("Data Received!");
+        response.statusCode = 200;
+        response.setHeader("Content-Type", "text/plain");
+        response.end("Data Received!");
     } catch (error) {
         console.error('Error saving data:', error);
-        res.statusCode = 500;
-        res.setHeader("Content-Type", "text/plain");
-        res.end("Error saving data!");
+        response.statusCode = 500;
+        response.setHeader("Content-Type", "text/plain");
+        response.end("Error saving data!");
+    }
+});
+
+
+// Get Request which send front end blog data in json format
+app.get("/blogs", async (request, response) => {
+
+    const path = __dirname + '/blogs/blog_';
+    const blogs = []
+
+    try {
+        for (let index = 1; true; index++) {
+
+            let folder = path + index + '/';
+            if (fs.existsSync(folder)) {
+                let image = await fs.promises.readFile(folder + 'image.jpg');
+                let text = await fs.promises.readFile(folder + 'text.json');
+                let blog = {
+                    image: image.toString('base64'),
+                    text: JSON.parse(text)
+                };
+                blogs.push(blog);
+            } else {
+                response.status(200).json(blogs);
+                break;
+            }
+        }
+    } catch (error) {
+        // Send an error response with status code 500 if any error occurs
+        res.status(500).json({ error: 'Error fetching blog content' }); 
     }
 });
 
