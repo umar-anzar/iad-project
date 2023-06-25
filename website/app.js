@@ -155,18 +155,7 @@ to ensure that it acts as a fallback for non-existent routes.
 */
 
 
-// Multiple Network Interfaces
-// Radmin VPN IP
-app.listen("5500", "26.111.20.217", () => {
-    console.log("Server is running on http://26.111.20.217:5500");
-})
-
 // Localhost IP
 app.listen("5500", "localhost", () => {
     console.log("Server is running on http://localhost:5500");
-})
-
-// Private IP
-app.listen("5500", "192.168.100.54", () => {
-    console.log("Server is running on http://192.168.100.54:5500");
 })
