@@ -2,6 +2,7 @@
 const express = require("express");
 const mongo = require("mongoose");
 const fs = require('fs');
+const os = require('os');
 
 // Create Express App and Extract Schema
 const app = express();
@@ -25,7 +26,6 @@ const connectDB = async () => {
 };
 
 connectDB();
-
 
 
 //Creating Schema for Contact Model {name, email, message}
@@ -142,7 +142,6 @@ app.get("/blogs", async (request, response) => {
 
 
 
-
 // Catch-all route handler for non-existent routes
 app.use((request, response) => {
     response.statusCode = 404; // Not Found
@@ -155,7 +154,32 @@ to ensure that it acts as a fallback for non-existent routes.
 */
 
 
+
+
+// Listen on Multiple Network Interfaces
+const port = 5500;
+
+// Get all the multiple network interfaces As Object
+const networkInterfaces = os.networkInterfaces();
+
+// Loop Through all the network interfaces and Listen on all IPV4 Address available on the machine
+Object.keys(networkInterfaces).forEach((interfaceName) => {
+
+    const addresses = networkInterfaces[interfaceName];
+
+    addresses.forEach((address) => {
+        if (address.family === 'IPv4') {
+            app.listen(port, address.address, () => {
+                console.log(`Interface: ${interfaceName}`);
+                console.log(`IP Address: http://${address.address}:${port}`);
+            })
+        }
+    });
+
+});
+
+
 // Localhost IP
-app.listen("5500", "localhost", () => {
-    console.log("Server is running on http://localhost:5500");
-})
+// app.listen("5500", "localhost", () => {
+//     console.log("Server is running on http://localhost:5500");
+// })
