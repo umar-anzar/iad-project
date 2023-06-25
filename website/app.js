@@ -1,12 +1,31 @@
 // Import Require Libraries
 const express = require("express");
 const mongo = require("mongoose");
+const rateLimiter = require("express-rate-limit");
 const fs = require('fs');
 const os = require('os');
 
 // Create Express App and Extract Schema
 const app = express();
 const { Schema } = mongo;
+
+
+/*  
+    The rate limiter middleware needs to access the request 
+    body in order to identify the IP address of the client 
+    making the request. It uses this information 
+    to enforce rate limiting rules per IP address. If the 
+    rate limiter middleware is placed after express.json(), 
+    it won't have access to the request body, and the rate 
+    limiting logic may not work as expected.
+*/
+
+// Apply rate limiter middleware to each route
+app.use(rateLimiter({
+    windowMs: 5 * 1000, // 10 seconds
+    max: 20, // limit each IP to 10 requests per windowMs
+    message: "Too many requests from this IP, please try again later"
+}));
 
 
 // Express JS Middleware
@@ -141,7 +160,7 @@ app.get("/blogs", async (request, response) => {
 });
 
 
-
+// Express JS Middleware
 // Catch-all route handler for non-existent routes
 app.use((request, response) => {
     response.statusCode = 404; // Not Found
@@ -152,7 +171,6 @@ app.use((request, response) => {
 It should be placed at the end of all other route handlers and middleware functions 
 to ensure that it acts as a fallback for non-existent routes.
 */
-
 
 
 
@@ -177,9 +195,3 @@ Object.keys(networkInterfaces).forEach((interfaceName) => {
     });
 
 });
-
-
-// Localhost IP
-// app.listen("5500", "localhost", () => {
-//     console.log("Server is running on http://localhost:5500");
-// })
