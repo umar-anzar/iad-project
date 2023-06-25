@@ -4,11 +4,16 @@
     font-family: "Raleway-SemiBold",Arial, Helvetica, sans-serif;
     font-size: 20px;
     padding: 10px 30px 10px 30px;
+    transition: background-color ease 0.2s;
 }
 
 .button:hover {
     cursor: pointer; /* Change cursor style to pointer on hover */
     background-color: #9599eb;
+}
+
+.button:active {
+  background-color:	#006400;
 }
 
 #download_btn {

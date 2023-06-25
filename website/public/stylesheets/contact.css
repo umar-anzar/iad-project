@@ -69,3 +69,12 @@ h2 {
     margin-bottom: 1%;
     width: 98%;
 }
+
+#tick {
+    opacity: 0;
+    transition: opacity ease 0.3s;
+}
+
+#tick.visible {
+    opacity: 1;
+}

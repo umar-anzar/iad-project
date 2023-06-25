@@ -1,5 +1,7 @@
 // Send Post request
+
 document.addEventListener("DOMContentLoaded", function () {
+
     const form = document.getElementById("contact_form");
     const sendButton = document.getElementById("send_message");
     const nameInput = document.getElementById("nme");
@@ -16,9 +18,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = emailInput.value.trim();
         const message = messageInput.value.trim();
 
+        if (!form.checkValidity()) {
+            // If the form is not valid, let the browser handle the validation messages
+            form.reportValidity();
+            return;
+        }
+
         // Validate name and email using regex patterns
         if (!emailPattern.test(email)) {
             alert("Invalid Email!");
+            emailInput.focus();
             return;
         }
 
@@ -36,9 +45,23 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then(function (response) {
                 console.log("Success!");
+                displayImage();
             })
             .catch(function (error) {
                 console.log("Error!");
             });
     });
+
+
+
 });
+
+
+
+const tickMark = document.getElementById('tick');
+const displayImage = () => {
+
+    tickMark.classList.add('visible');
+    setTimeout(hideImage, 3000);
+};
+const hideImage =() => (tickMark.classList.remove('visible'));
