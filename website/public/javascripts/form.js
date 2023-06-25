@@ -44,8 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }),
         })
             .then(function (response) {
-                console.log("Success!");
-                displayImage();
+                if (!(response.status == 429)) {
+                    console.log("Success!");
+                    displayImage();
+                }
             })
             .catch(function (error) {
                 console.log("Error!");

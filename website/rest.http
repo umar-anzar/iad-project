@@ -1,1 +1,11 @@
+###
 GET http://localhost:5500
+
+###
+POST http://localhost:5500/contact_form
+
+###
+GET http://localhost:5500/blogs
+
+###
+GET http://localhost:5500/download_cv

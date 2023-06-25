@@ -22,11 +22,28 @@ const { Schema } = mongo;
 
 // Apply rate limiter middleware to each route
 app.use(rateLimiter({
-    windowMs: 5 * 1000, // 10 seconds
-    max: 20, // limit each IP to 10 requests per windowMs
+    windowMs: 5 * 1000, // 5 seconds
+    max: 20, // limit each IP to 20 requests per windowMs
     message: "Too many requests from this IP, please try again later"
 }));
 
+const formLimiter = rateLimiter({
+    windowMs: 10 * 1000, // 10 seconds
+    max: 2, // limit each IP to 2 requests per windowMs
+    message: {
+        code: 429,
+        message:"Too many send requests from this IP, please try again later"
+    }
+});
+
+const downloadCVLimiter = rateLimiter({
+    windowMs: 10 * 1000, // 10 seconds
+    max: 2, // limit each IP to 2 requests per windowMs
+    message: {
+        code: 429,
+        message:"Too many send requests from this IP, please try again later"
+    }
+});
 
 // Express JS Middleware
 app.use(express.json());
@@ -81,7 +98,7 @@ app.get("/contact", (request, response) => {
     response.sendFile(__dirname + "/public/contact.html", (error) => (error500(error, response)));
 });
 
-app.get("/download_cv", (request, response) => {
+app.get("/download_cv", downloadCVLimiter, (request, response) => {
     const filePath = __dirname + '/public/CV/umarCSResume.pdf';
     const fileName = 'umarCSResume.pdf';
 
@@ -93,7 +110,7 @@ app.get("/download_cv", (request, response) => {
 
 
 // Receive Form Data and add it to the database
-app.post("/contact_form", async (request, response) => {
+app.post("/contact_form", formLimiter, async (request, response) => {
     const email1 = request.body.email;
     const name1 = request.body.name;
     const message1 = request.body.message;
