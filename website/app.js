@@ -23,7 +23,7 @@ const { Schema } = mongo;
 // Apply rate limiter middleware to each route
 app.use(rateLimiter({
     windowMs: 5 * 1000, // 5 seconds
-    max: 20, // limit each IP to 20 requests per windowMs
+    max: 30, // limit each IP to 20 requests per windowMs
     message: "Too many requests from this IP, please try again later"
 }));
 
@@ -101,7 +101,7 @@ app.get("/contact", (request, response) => {
 app.get("/download_cv", downloadCVLimiter, (request, response) => {
     const filePath = __dirname + '/public/CV/umarCSResume.pdf';
     const fileName = 'umarCSResume.pdf';
-
+    console.log("CV Request");
     response.statusCode = 200;
     response.setHeader('Content-Disposition', 'attachment; filename=' + fileName);
     response.setHeader("Content-Type", "application/pdf");

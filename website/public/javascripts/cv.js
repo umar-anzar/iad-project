@@ -5,13 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // When the user clicks on the button, Downloads the PDF
     downloadButton.addEventListener('click', function() {
-
         // Get request pdf file from the server
         fetch('/download_cv')
 
         // Return a promise that resolves with the PDF
         .then(response => {
             const filename = response.headers.get('content-disposition').split('filename=')[1];
+            
             return { response, filename }; // Return an object with both the response and filename
         })
 
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Set the desired filename for the downloaded file
                 link.download = filename; 
                 link.click();
-
+                
                 // Delete the link element
                 link.remove();
 
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         
         .catch(error => {
-            console.error('Error fetching PDF file:', error);
+            console.log('Error fetching PDF file:', error);
         });
     });
 });
