@@ -73,6 +73,36 @@ header {
   text-align: center;
   font-size: 1em;
 }
+.nav-item {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px; /* Adjust the value as needed */
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color:white; /* Adjust the color as needed */
+  transition: width 0.3s ease; /* Adjust the transition duration as needed */
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
 
 .nav-link {
   color: #ffffff;
