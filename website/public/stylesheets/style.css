@@ -55,7 +55,7 @@ header {
 
 .navbar {
   width: 70%;
-  font-family: "Raleway-SemiBold",Arial, Helvetica, sans-serif;
+  font-family: "Raleway-Medium",Arial, Helvetica, sans-serif;
   font-size: 20px;
 }
 
@@ -116,7 +116,7 @@ h1 {
 
 #home_intro p{
   padding-right: 30%;
-  font-family: "Raleway-SemiBold",Arial, Helvetica, sans-serif;
+  font-family: "Raleway-Medium",Arial, Helvetica, sans-serif;
   font-size: 2em;
 }
 

@@ -1,15 +1,27 @@
-.dark {
+/* .dark {
     background-color: rgba(34, 42, 54, 1);
 } 
 
 .dark_light {
     background-color: rgba(34, 42, 54, 0.95);
+}  */
+
+.dark {
+    background-color: rgba(0, 0, 0, 1);
+} 
+
+.dark_light {
+    background-color: rgba(0, 0, 0, 0.95);
 } 
 
 .purple {
     background-color: #676CDB;
 }
 
-.brown {
+/* .brown {
     background-color: #313245;
+} */
+
+.brown {
+    background-color: #0A0A12;
 }
